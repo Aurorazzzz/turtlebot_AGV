@@ -32,7 +32,7 @@ add_library(${PROJECT_NAME}_lib
 
   "src/sensors/battery_state.cpp"
   "src/sensors/joint_state.cpp"
-  "src/sensors/adc_reader.cpp"
+  "src/sensors/AdcReader.cpp"
   "src/sensors/wheel_frequency_reader.cpp"
   "src/sensors/wheel_command_state.cpp"
 
