@@ -104,12 +104,12 @@ void TurtleBot3::init_hardware()
   if (!motor_driver_->init()) {
   RCLCPP_ERROR(get_logger(), "Motor driver init failed");
   rclcpp::shutdown();
-  return;
+  return;}
 
   // 4) Etat partagé pour le signe (mis à jour par votre futur MotorCommand)
   wheel_cmd_state_ = std::make_shared<WheelCommandState>();
 }
-}
+
 
 
 void TurtleBot3::add_wheels()
