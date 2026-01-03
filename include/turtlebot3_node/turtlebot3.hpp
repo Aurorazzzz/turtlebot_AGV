@@ -26,7 +26,7 @@
 #include <rclcpp/rclcpp.hpp>
 
 // TB3 utility subscriber (already used in your cpp)
-#include "turtlebot3_node/subscriber/twist_subscriber.hpp"
+#include "turtlebot3_node/twist_subscriber.hpp"
 
 // Sensors base + concrete sensors you instantiate
 #include "turtlebot3_node/sensors/sensors.hpp"
