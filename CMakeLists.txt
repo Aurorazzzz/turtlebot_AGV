@@ -63,3 +63,10 @@ ament_export_dependencies(
   tf2
   tf2_ros
 )
+
+ament_target_dependencies(${PROJECT_NAME}_lib
+  rclcpp
+  sensor_msgs
+  geometry_msgs
+  std_msgs
+)

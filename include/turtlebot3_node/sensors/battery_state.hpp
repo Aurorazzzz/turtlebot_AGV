@@ -9,7 +9,7 @@
 #include <string>
 
 #include "turtlebot3_node/sensors/sensors.hpp"
-#include "adc_reader.hpp"  // <-- adaptez le chemin selon où vous placez AdcReader
+#include "turtlebot3_node/sensors/AdcReader.hpp" // <-- adaptez le chemin selon où vous placez AdcReader
 
 namespace robotis
 {
