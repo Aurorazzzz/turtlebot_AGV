@@ -30,6 +30,8 @@ find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(turtlebot3_msgs REQUIRED)
 
+
+
 ################################################################################
 # Build
 ################################################################################
@@ -41,6 +43,7 @@ add_library(${PROJECT_NAME}_lib
   "src/devices/motor_power.cpp"
   "src/devices/sound.cpp"
   "src/devices/reset.cpp"
+  "src/devices/motor_pwm_dir.cpp"
 
   "src/diff_drive_controller.cpp"
   "src/dynamixel_sdk_wrapper.cpp"
@@ -51,6 +54,8 @@ add_library(${PROJECT_NAME}_lib
   "src/sensors/imu.cpp"
   "src/sensors/joint_state.cpp"
   "src/sensors/sensor_state.cpp"
+  "src/sensors/AdcReader.cpp"
+  "src/sensors/wheel_frequency_reader.cpp"
 )
 
 target_include_directories(${PROJECT_NAME}_lib PUBLIC
@@ -66,12 +71,14 @@ target_link_libraries(${PROJECT_NAME}_lib
   ${std_msgs_TARGETS}
   ${std_srvs_TARGETS}
   ${turtlebot3_msgs_TARGETS}
+  pigpio
   message_filters::message_filters
   rclcpp::rclcpp
   rcutils::rcutils
   tf2::tf2
   tf2_ros::tf2_ros
 )
+
 
 set(EXECUTABLE_NAME "turtlebot3_ros")
 add_executable(${EXECUTABLE_NAME} src/node_main.cpp)
