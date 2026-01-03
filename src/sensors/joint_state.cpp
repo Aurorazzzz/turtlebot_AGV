@@ -1,110 +1,55 @@
-// Copyright 2019 ROBOTIS CO., LTD.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// Author: Darby Lim
-
-#include <array>
-
-#include <memory>
-#include <string>
-#include <utility>
-
 #include "turtlebot3_node/sensors/joint_state.hpp"
+
+#include <utility>
 
 using robotis::turtlebot3::sensors::JointState;
 
-static std::array<int32_t, robotis::turtlebot3::sensors::JOINT_NUM> last_diff_position,
-  last_position;
-
 JointState::JointState(
   std::shared_ptr<rclcpp::Node> & nh,
-  std::shared_ptr<DynamixelSDKWrapper> & dxl_sdk_wrapper,
+  std::shared_ptr<WheelFrequencyReader> wheel_reader,
+  std::shared_ptr<WheelCommandState> wheel_cmd_state,
   const std::string & topic_name,
   const std::string & frame_id)
-: Sensors(nh, frame_id)
+: Sensors(nh, frame_id),
+  wheel_reader_(std::move(wheel_reader)),
+  wheel_cmd_state_(std::move(wheel_cmd_state))
 {
   pub_ = nh->create_publisher<sensor_msgs::msg::JointState>(topic_name, this->qos_);
-  last_position =
-  {dxl_sdk_wrapper->get_data_from_device<int32_t>(
-      extern_control_table.present_position_left.addr,
-      extern_control_table.present_position_left.length),
-    dxl_sdk_wrapper->get_data_from_device<int32_t>(
-      extern_control_table.present_position_right.addr,
-      extern_control_table.present_position_right.length)};
-
-  nh_->get_parameter_or<std::string>(
-    "namespace",
-    name_space_,
-    std::string(""));
-
-  if (name_space_ != "") {
-    frame_id_ = name_space_ + "/" + frame_id_;
-    wheel_right_joint_ = name_space_ + "/" + wheel_right_joint_;
-    wheel_left_joint_ = name_space_ + "/" + wheel_left_joint_;
-  }
-  RCLCPP_INFO(nh_->get_logger(), "Succeeded to create joint state publisher");
+  RCLCPP_INFO(nh_->get_logger(), "Succeeded to create joint state publisher (freq + external sign)");
 }
 
-void JointState::publish(
-  const rclcpp::Time & now,
-  std::shared_ptr<DynamixelSDKWrapper> & dxl_sdk_wrapper)
+void JointState::publish(const rclcpp::Time & now)
 {
   auto msg = std::make_unique<sensor_msgs::msg::JointState>();
 
-  std::array<int32_t, JOINT_NUM> position =
-  {dxl_sdk_wrapper->get_data_from_device<int32_t>(
-      extern_control_table.present_position_left.addr,
-      extern_control_table.present_position_left.length),
-    dxl_sdk_wrapper->get_data_from_device<int32_t>(
-      extern_control_table.present_position_right.addr,
-      extern_control_table.present_position_right.length)};
-
-  std::array<int32_t, JOINT_NUM> velocity =
-  {dxl_sdk_wrapper->get_data_from_device<int32_t>(
-      extern_control_table.present_velocity_left.addr,
-      extern_control_table.present_velocity_left.length),
-    dxl_sdk_wrapper->get_data_from_device<int32_t>(
-      extern_control_table.present_velocity_right.addr,
-      extern_control_table.present_velocity_right.length)};
-
-  // std::array<int32_t, JOINT_NUM> current =
-  //   {dxl_sdk_wrapper->get_data_from_device<int32_t>(
-  //     extern_control_table.resent_current_left.addr,
-  //     extern_control_table.resent_current_left.length),
-  //   dxl_sdk_wrapper->get_data_from_device<int32_t>(
-  //     extern_control_table.resent_current_right.addr,
-  //     extern_control_table.resent_current_right.length)};
-
-  msg->header.frame_id = this->frame_id_;
   msg->header.stamp = now;
+  msg->header.frame_id = frame_id_;
+  msg->name = {wheel_left_joint_, wheel_right_joint_};
 
-  msg->name.push_back(wheel_left_joint_);
-  msg->name.push_back(wheel_right_joint_);
+  // Lecture des fréquences (Hz)
+  double fL = 0.0, fR = 0.0;
+  if (wheel_reader_) {
+    auto fr = wheel_reader_->getFrequenciesHz();
+    fL = fr.first;
+    fR = fr.second;
+  }
 
-  msg->position.push_back(TICK_TO_RAD * last_diff_position[0]);
-  msg->position.push_back(TICK_TO_RAD * last_diff_position[1]);
+  // Lecture des signes
+  int sL = 0, sR = 0;
+  if (wheel_cmd_state_) {
+    sL = wheel_cmd_state_->sign_left.load();
+    sR = wheel_cmd_state_->sign_right.load();
+  }
 
-  msg->velocity.push_back(RPM_TO_MS * velocity[0]);
-  msg->velocity.push_back(RPM_TO_MS * velocity[1]);
+  // Valeurs signées : on publie la fréquence signée (debug-friendly)
+  const double fL_signed = fL * static_cast<double>(sL);
+  const double fR_signed = fR * static_cast<double>(sR);
 
-  // msg->effort.push_back(current[0]);
-  // msg->effort.push_back(current[1]);
+  // Position : pour l'instant on ne remplit pas (vous pourrez intégrer plus tard)
+  // msg->position = {...};  // vide
 
-  last_diff_position[0] += (position[0] - last_position[0]);
-  last_diff_position[1] += (position[1] - last_position[1]);
-
-  last_position = position;
+  // Velocity : ici = fréquence signée (Hz), temporaire tant que la conversion n’est pas calibrée
+  msg->velocity = {fL_signed, fR_signed};
 
   pub_->publish(std::move(msg));
 }

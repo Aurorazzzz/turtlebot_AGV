@@ -13,106 +13,93 @@
 // limitations under the License.
 //
 // Author: Darby Lim
+// Modified for custom robot (pigpio + ADC + wheel freq + PWM motors)
 
 #ifndef TURTLEBOT3_NODE__TURTLEBOT3_HPP_
 #define TURTLEBOT3_NODE__TURTLEBOT3_HPP_
 
-#include <tf2_ros/transform_broadcaster.h>
-
-#include <array>
-#include <chrono>
-#include <list>
-#include <map>
 #include <memory>
-#include <mutex>
 #include <string>
-#include <queue>
+#include <vector>
+#include <chrono>
 
-#include <geometry_msgs/msg/twist.hpp>
-#include <nav_msgs/msg/odometry.hpp>
 #include <rclcpp/rclcpp.hpp>
-#include <sensor_msgs/msg/battery_state.hpp>
-#include <sensor_msgs/msg/imu.hpp>
-#include <sensor_msgs/msg/joint_state.hpp>
-#include <turtlebot3_msgs/msg/sensor_state.hpp>
 
-#include "turtlebot3_node/control_table.hpp"
-#include "turtlebot3_node/devices/devices.hpp"
-#include "turtlebot3_node/devices/motor_power.hpp"
-#include "turtlebot3_node/devices/reset.hpp"
-#include "turtlebot3_node/devices/sound.hpp"
-#include "turtlebot3_node/dynamixel_sdk_wrapper.hpp"
-#include "turtlebot3_node/odometry.hpp"
-#include "turtlebot3_node/sensors/battery_state.hpp"
-#include "turtlebot3_node/sensors/imu.hpp"
-#include "turtlebot3_node/sensors/joint_state.hpp"
-#include "turtlebot3_node/sensors/sensor_state.hpp"
+// TB3 utility subscriber (already used in your cpp)
+#include "turtlebot3_node/subscriber/twist_subscriber.hpp"
+
+// Sensors base + concrete sensors you instantiate
 #include "turtlebot3_node/sensors/sensors.hpp"
-#include "turtlebot3_node/twist_subscriber.hpp"
+#include "turtlebot3_node/sensors/joint_state.hpp"
+#include "turtlebot3_node/sensors/battery_state.hpp"
+
+// Your custom backends
+#include "turtlebot3_node/sensors/AdcReader.hpp"
+#include "turtlebot3_node/sensors/wheel_frequency_reader.hpp"
+#include "turtlebot3_node/sensors/wheel_command_state.hpp"
+
+// Motor driver (PWM + DIR)
+#include "turtlebot3_node/devices/motor_pwm_dir.hpp"
 
 namespace robotis
 {
 namespace turtlebot3
 {
-extern const ControlTable extern_control_table;
+
 class TurtleBot3 : public rclcpp::Node
 {
 public:
-  typedef struct
+  // TB3 signature keeps usb_port, you can ignore it for now
+  explicit TurtleBot3(const std::string & usb_port = "");
+  ~TurtleBot3() override;
+
+  // Minimal structs kept for wheels params (separation/radius)
+  struct Wheels
   {
-    float separation;
-    float radius;
-  } Wheels;
+    float separation = 0.52f;
+    float radius = 0.0855f;
+  };
 
-  typedef struct
-  {
-    float profile_acceleration_constant;
-    float profile_acceleration;
-  } Motors;
-
-  explicit TurtleBot3(const std::string & usb_port);
-  virtual ~TurtleBot3() {}
-
+  // Kept only if still referenced somewhere else; can be removed later
   Wheels * get_wheels();
-  Motors * get_motors();
 
 private:
-  void init_dynamixel_sdk_wrapper(const std::string & usb_port);
-  void check_device_status();
-
-  void add_sensors();
-  void add_devices();
-  void add_motors();
+  // --- init / setup ---
+  void init_hardware();
   void add_wheels();
+  void add_sensors();
 
+  // --- runtime ---
   void run();
-
   void publish_timer(const std::chrono::milliseconds timeout);
-  void heartbeat_timer(const std::chrono::milliseconds timeout);
-
   void cmd_vel_callback();
-  void parameter_event_callback();
 
-  Wheels wheels_;
-  Motors motors_;
+private:
+  // Node handle trick used in TB3 to pass shared_ptr<Node> to components
+  std::shared_ptr<rclcpp::Node> node_handle_;
 
-  std::shared_ptr<DynamixelSDKWrapper> dxl_sdk_wrapper_;
-
-  std::list<sensors::Sensors *> sensors_;
-  std::map<std::string, devices::Devices *> devices_;
-
-  std::unique_ptr<Odometry> odom_;
-
-  rclcpp::Node::SharedPtr node_handle_;
-
+  // Timers
   rclcpp::TimerBase::SharedPtr publish_timer_;
-  rclcpp::TimerBase::SharedPtr heartbeat_timer_;
 
+  // cmd_vel subscriber wrapper
   std::unique_ptr<TwistSubscriber> cmd_vel_sub_;
 
-  rclcpp::AsyncParametersClient::SharedPtr priv_parameters_client_;
-  rclcpp::Subscription<rcl_interfaces::msg::ParameterEvent>::SharedPtr parameter_event_sub_;
+  // Robot parameters
+  Wheels wheels_;
+
+  // Sensors container (TB3 style raw pointers)
+  std::vector<sensors::Sensors *> sensors_;
+
+  // --- custom hardware backends ---
+  std::shared_ptr<sensors::AdcReader> adc_reader_;
+  std::shared_ptr<sensors::WheelFrequencyReader> wheel_reader_;
+  std::shared_ptr<sensors::WheelCommandState> wheel_cmd_state_;
+
+  // Motor driver
+  std::unique_ptr<MotorPwmDir> motor_driver_;
 };
+
 }  // namespace turtlebot3
 }  // namespace robotis
+
 #endif  // TURTLEBOT3_NODE__TURTLEBOT3_HPP_

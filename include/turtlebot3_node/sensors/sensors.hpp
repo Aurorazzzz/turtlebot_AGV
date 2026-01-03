@@ -23,14 +23,10 @@
 
 #include <rclcpp/rclcpp.hpp>
 
-#include "turtlebot3_node/control_table.hpp"
-#include "turtlebot3_node/dynamixel_sdk_wrapper.hpp"
-
 namespace robotis
 {
 namespace turtlebot3
 {
-extern const ControlTable extern_control_table;
 namespace sensors
 {
 class Sensors
@@ -45,8 +41,7 @@ public:
   }
 
   virtual void publish(
-    const rclcpp::Time & now,
-    std::shared_ptr<DynamixelSDKWrapper> & dxl_sdk_wrapper) = 0;
+    const rclcpp::Time & now) = 0;
 
 protected:
   std::shared_ptr<rclcpp::Node> nh_;
