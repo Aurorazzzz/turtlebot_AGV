@@ -5,7 +5,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
-#include <pigpio.h>
+#include <pigpiod_if2.h>   // <-- au lieu de pigpio.h
 
 #include <cerrno>
 #include <cstdio>
@@ -16,7 +16,13 @@ constexpr double VREF = 2.048; // MCP3428
 }
 
 AdcReader::AdcReader(std::string i2c_dev, int addr_7b, int enable_gpio)
-: i2c_dev_(std::move(i2c_dev)), addr_7b_(addr_7b), enable_gpio_(enable_gpio)
+: AdcReader(-1, std::move(i2c_dev), addr_7b, enable_gpio) // compat si vous aviez des appels anciens
+{
+}
+
+// Nouveau constructeur recommandé
+AdcReader::AdcReader(int pi, std::string i2c_dev, int addr_7b, int enable_gpio)
+: pi_(pi), i2c_dev_(std::move(i2c_dev)), addr_7b_(addr_7b), enable_gpio_(enable_gpio)
 {
 }
 
@@ -26,42 +32,37 @@ AdcReader::~AdcReader()
     ::close(fd_);
     fd_ = -1;
   }
-
-  // NE PAS appeler gpioTerminate() ici
-  // pigpio est géré par un niveau supérieur (ex: TurtleBot3::init_hardware)
+  // NE PAS arrêter pigpiod ici : c'est géré au niveau TurtleBot3 (pigpio_stop(pi_))
 }
-
 
 bool AdcReader::init()
 {
-  // 1) Ouverture I2C
   if (!open_i2c_()) {
     return false;
   }
 
-  // 2) GPIO enable (pigpio supposé déjà initialisé)
+  // GPIO enable via pigpiod (si demandé)
   if (enable_gpio_ >= 0) {
-    // Optionnel : on peut vérifier que pigpio est vivant
-    if (gpioHardwareRevision() == 0) {
-      std::fprintf(stderr, "pigpio not initialized before AdcReader::init()\n");
+    if (pi_ < 0) {
+      std::fprintf(stderr, "AdcReader::init(): enable_gpio set but pi handle is invalid (pi=%d)\n", pi_);
       return false;
     }
-
-    gpioSetMode(enable_gpio_, PI_OUTPUT);
-    gpioWrite(enable_gpio_, 1);
+    set_mode(pi_, enable_gpio_, PI_OUTPUT);
+    gpio_write(pi_, enable_gpio_, 1);
   }
 
   return true;
 }
+
 void AdcReader::setEnabled(bool on)
 {
   if (enable_gpio_ < 0) return;
-  if (gpioHardwareRevision() == 0) return;
-  gpioWrite(enable_gpio_, on ? 1 : 0);}
+  if (pi_ < 0) return;
+  gpio_write(pi_, enable_gpio_, on ? 1 : 0);
+}
 
 bool AdcReader::update()
 {
-  // Lecture CH1 + CH4 (comme votre programme)
   int16_t code1 = 0, code4 = 0;
   uint8_t cfg1 = 0, cfg4 = 0;
 
@@ -100,7 +101,6 @@ AdcReader::Sample AdcReader::getLatest() const
 
 uint8_t AdcReader::make_cfg_(int channel_1_to_4)
 {
-  // continuous mode, 16-bit (15 SPS), gain x1
   const uint8_t RDY = 1u << 7;
   const uint8_t OC  = 1u << 4;       // continuous
   const uint8_t S16 = 0b10u << 2;    // 16-bit
@@ -154,9 +154,9 @@ bool AdcReader::read_channel_once_(int channel, int16_t& out_code, uint8_t& out_
     }
 
     const uint8_t cfg_read = buf[2];
-    const bool ready = ((cfg_read & 0x80u) == 0u); // RDY=0 => ready
+    const bool ready = ((cfg_read & 0x80u) == 0u);
     if (ready) {
-      out_code = static_cast<int16_t>((buf[0] << 8) | buf[1]); // two's complement
+      out_code = static_cast<int16_t>((buf[0] << 8) | buf[1]);
       out_cfg = cfg_read;
       return true;
     }
@@ -175,15 +175,12 @@ double AdcReader::code_to_volts_(int16_t code, int gain)
 
 double AdcReader::applyVoltageDivider(double adc_input_V, double r_top_ohm, double r_bottom_ohm)
 {
-  // adc_input_V = Vbat * (Rbottom / (Rtop + Rbottom))
-  // => Vbat = adc_input_V * (Rtop + Rbottom) / Rbottom
   if (r_bottom_ohm <= 0.0) return 0.0;
   return adc_input_V * (r_top_ohm + r_bottom_ohm) / r_bottom_ohm;
 }
 
 double AdcReader::shuntToCurrent(double sense_V, double shunt_ohm, double gain)
 {
-  // I = Vsense / (Rshunt * gain)
   if (shunt_ohm <= 0.0 || gain <= 0.0) return 0.0;
   return sense_V / (shunt_ohm * gain);
 }

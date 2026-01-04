@@ -7,8 +7,8 @@
 #include <sensor_msgs/msg/joint_state.hpp>
 
 #include "turtlebot3_node/sensors/sensors.hpp"
-#include "wheel_frequency_reader.hpp"
-#include "wheel_command_state.hpp"
+#include "turtlebot3_node/sensors/wheel_frequency_reader.hpp"
+#include "turtlebot3_node/sensors/wheel_command_state.hpp"
 
 namespace robotis::turtlebot3::sensors
 {

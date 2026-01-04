@@ -14,7 +14,6 @@
 //
 // Author: Darby Lim
 // Modified for custom robot (pigpio + ADC + wheel freq + PWM motors)
-
 #ifndef TURTLEBOT3_NODE__TURTLEBOT3_HPP_
 #define TURTLEBOT3_NODE__TURTLEBOT3_HPP_
 
@@ -25,20 +24,16 @@
 
 #include <rclcpp/rclcpp.hpp>
 
-// TB3 utility subscriber (already used in your cpp)
 #include "turtlebot3_node/twist_subscriber.hpp"
 
-// Sensors base + concrete sensors you instantiate
 #include "turtlebot3_node/sensors/sensors.hpp"
 #include "turtlebot3_node/sensors/joint_state.hpp"
 #include "turtlebot3_node/sensors/battery_state.hpp"
 
-// Your custom backends
 #include "turtlebot3_node/sensors/AdcReader.hpp"
 #include "turtlebot3_node/sensors/wheel_frequency_reader.hpp"
 #include "turtlebot3_node/sensors/wheel_command_state.hpp"
 
-// Motor driver (PWM + DIR)
 #include "turtlebot3_node/devices/motor_pwm_dir.hpp"
 
 namespace robotis
@@ -49,53 +44,45 @@ namespace turtlebot3
 class TurtleBot3 : public rclcpp::Node
 {
 public:
-  // TB3 signature keeps usb_port, you can ignore it for now
   explicit TurtleBot3(const std::string & usb_port = "");
   ~TurtleBot3() override;
 
-  // Minimal structs kept for wheels params (separation/radius)
   struct Wheels
   {
     float separation = 0.52f;
     float radius = 0.0855f;
   };
 
-  // Kept only if still referenced somewhere else; can be removed later
   Wheels * get_wheels();
 
 private:
-  // --- init / setup ---
   void init_hardware();
   void add_wheels();
   void add_sensors();
 
-  // --- runtime ---
   void run();
   void publish_timer(const std::chrono::milliseconds timeout);
   void cmd_vel_callback();
 
 private:
-  // Node handle trick used in TB3 to pass shared_ptr<Node> to components
   std::shared_ptr<rclcpp::Node> node_handle_;
 
-  // Timers
   rclcpp::TimerBase::SharedPtr publish_timer_;
-
-  // cmd_vel subscriber wrapper
   std::unique_ptr<TwistSubscriber> cmd_vel_sub_;
 
-  // Robot parameters
   Wheels wheels_;
 
-  // Sensors container (TB3 style raw pointers)
-  std::vector<sensors::Sensors *> sensors_;
+  // pigpiod_if2 handle (pigpio_start / pigpio_stop)
+  int pi_{-1};
+
+  // ✅ no leak: sensors owned here
+  std::vector<std::unique_ptr<sensors::Sensors>> sensors_;
 
   // --- custom hardware backends ---
   std::shared_ptr<sensors::AdcReader> adc_reader_;
   std::shared_ptr<sensors::WheelFrequencyReader> wheel_reader_;
   std::shared_ptr<sensors::WheelCommandState> wheel_cmd_state_;
 
-  // Motor driver
   std::unique_ptr<MotorPwmDir> motor_driver_;
 };
 
