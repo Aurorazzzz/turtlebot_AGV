@@ -43,14 +43,28 @@ target_include_directories(${PROJECT_NAME}_lib PUBLIC
   $<INSTALL_INTERFACE:include>
 )
 
+# pigpio installé via "make install" se trouve typiquement dans /usr/local
+target_include_directories(${PROJECT_NAME}_lib PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+  /usr/local/include
+)
+
+target_link_directories(${PROJECT_NAME}_lib PUBLIC
+  /usr/local/lib
+)
+
 target_link_libraries(${PROJECT_NAME}_lib
-  pigpio
+  pigpiod_if2
+  rt
+  pthread
   message_filters::message_filters
   rclcpp::rclcpp
   rcutils::rcutils
   tf2::tf2
   tf2_ros::tf2_ros
 )
+
 
 ament_export_dependencies(
   geometry_msgs
