@@ -1,26 +1,18 @@
-#include <pigpio.h>
+#include <pigpiod_if2.h>
 #include <stdio.h>
 
-int main(void)
-{
-    const int led_pin = 6; // GPIO à adapter
+int main() {
+    int pi = pigpio_start(NULL, NULL);
+    if (pi < 0) { printf("Connexion pigpiod impossible\n"); return 1; }
 
-    if (gpioInitialise() < 0) {
-        printf("Erreur: impossible d'initialiser pigpio\n");
-        return 1;
-    }
-
-    gpioSetMode(led_pin, PI_OUTPUT);
+    int led_pin = 6;
+    set_mode(pi, led_pin, PI_OUTPUT);
 
     while (1) {
-        gpioWrite(led_pin, 1);   // LED ON
-        gpioDelay(500000);       // 500 ms
-
-        gpioWrite(led_pin, 0);   // LED OFF
-        gpioDelay(500000);       // 500 ms
+        gpio_write(pi, led_pin, 1); time_sleep(0.5);
+        gpio_write(pi, led_pin, 0); time_sleep(0.5);
     }
 
-    // Jamais atteint ici, mais bonne pratique
-    gpioTerminate();
+    pigpio_stop(pi);
     return 0;
 }
