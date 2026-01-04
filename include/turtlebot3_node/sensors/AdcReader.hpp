@@ -20,11 +20,16 @@ public:
   // IMPORTANT:
   // - pi : handle pigpiod_if2 (retourné par pigpio_start), -1 si vous n'utilisez pas de GPIO enable
   // - enable_gpio: GPIO optionnel qui alimente/active votre front-end analogique (-1 si pas utilisé)
-  explicit AdcReader(
-    int pi,
-    std::string i2c_dev = "/dev/i2c-1",
-    int addr_7b = 0x68,
-    int enable_gpio = -1);
+  // ✅ constructeur "compat" (sans pi) — doit exister si vous le définissez dans le cpp
+  explicit AdcReader(std::string i2c_dev = "/dev/i2c-1",
+                     int addr_7b = 0x68,
+                     int enable_gpio = -1);
+
+  // ✅ constructeur recommandé (avec pi)
+  explicit AdcReader(int pi,
+                     std::string i2c_dev = "/dev/i2c-1",
+                     int addr_7b = 0x68,
+                     int enable_gpio = -1);
 
   ~AdcReader();
 
