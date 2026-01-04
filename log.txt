@@ -1,83 +1,16 @@
-[sudo] password for insa: 
-Dec 19 17:50:21 insa-desktop kernel: Bluetooth: HCI UART protocol Broadcom registered
-Dec 19 17:50:21 insa-desktop kernel: Bluetooth: HCI UART protocol QCA registered
-Dec 19 17:50:21 insa-desktop kernel: Bluetooth: HCI UART protocol AG6XX registered
-Dec 19 17:50:21 insa-desktop kernel: Bluetooth: HCI UART protocol Marvell registered
-Dec 19 17:50:21 insa-desktop kernel: NET: Registered PF_ALG protocol family
-Dec 19 17:50:21 insa-desktop kernel: Bluetooth: RFCOMM TTY layer initialized
-Dec 19 17:50:21 insa-desktop kernel: Bluetooth: RFCOMM socket layer initialized
-Dec 19 17:50:21 insa-desktop kernel: Bluetooth: RFCOMM ver 1.11
-Dec 19 17:50:22 insa-desktop kernel: audit: type=1400 audit(1766163022.909:65): apparmor="DENIED" operation="capable" profile="/usr/sbin/cups-browsed" pid=1263 comm="cups-browsed" capability=23  capname="sys_nice"
-Dec 19 17:50:32 insa-desktop kernel: rfkill: input handler disabled
-Dec 19 17:51:16 insa-desktop kernel: vc4-drm gpu: swiotlb buffer is full (sz: 458752 bytes), total 32768 (slots), used 2010 (slots)
-Dec 19 17:51:17 insa-desktop kernel: vc4-drm gpu: swiotlb buffer is full (sz: 2097152 bytes), total 32768 (slots), used 274 (slots)
-Dec 19 17:51:17 insa-desktop kernel: vc4-drm gpu: swiotlb buffer is full (sz: 1540096 bytes), total 32768 (slots), used 22 (slots)
-Dec 19 17:51:25 insa-desktop kernel: audit: type=1400 audit(1766163085.481:66): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="firefox" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Dec 19 17:51:32 insa-desktop kernel: audit: type=1400 audit(1766163092.973:67): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Dec 19 17:51:37 insa-desktop kernel: audit: type=1400 audit(1766163097.977:68): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Dec 19 17:51:51 insa-desktop kernel: audit: type=1400 audit(1766163111.573:69): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Dec 19 17:52:01 insa-desktop kernel: audit: type=1400 audit(1766163121.669:70): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Dec 19 17:52:02 insa-desktop kernel: brcmfmac: brcmf_cfg80211_set_power_mgmt: power save enabled
-Dec 19 17:52:06 insa-desktop kernel: audit: type=1400 audit(1766163126.673:71): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Dec 19 17:52:09 insa-desktop kernel: IPv6: ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready
-Jan 04 22:15:19 insa-desktop kernel: audit: type=1400 audit(1767561319.697:72): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:15:19 insa-desktop kernel: vc4-drm gpu: swiotlb buffer is full (sz: 393216 bytes), total 32768 (slots), used 686 (slots)
-Jan 04 22:15:23 insa-desktop kernel: audit: type=1400 audit(1767561323.753:73): apparmor="DENIED" operation="capable" profile="/usr/sbin/cupsd" pid=3144 comm="cupsd" capability=12  capname="net_admin"
-Jan 04 22:15:24 insa-desktop kernel: audit: type=1400 audit(1767561324.141:74): apparmor="DENIED" operation="capable" profile="/usr/sbin/cups-browsed" pid=3166 comm="cups-browsed" capability=23  capname="sys_nice"
-Jan 04 22:15:25 insa-desktop kernel: audit: type=1400 audit(1767561325.229:75): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:15:30 insa-desktop kernel: audit: type=1400 audit(1767561330.417:76): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:15:35 insa-desktop kernel: audit: type=1400 audit(1767561335.645:77): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:15:40 insa-desktop kernel: audit: type=1400 audit(1767561340.681:78): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:15:45 insa-desktop kernel: audit: type=1400 audit(1767561345.773:79): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:15:50 insa-desktop kernel: audit: type=1400 audit(1767561350.781:80): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:16:02 insa-desktop kernel: vc4-drm gpu: swiotlb buffer is full (sz: 524288 bytes), total 32768 (slots), used 681 (slots)
-Jan 04 22:16:09 insa-desktop kernel: audit: type=1400 audit(1767561369.389:81): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:16:15 insa-desktop kernel: audit: type=1400 audit(1767561374.389:82): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:16:41 insa-desktop kernel: vc4-drm gpu: swiotlb buffer is full (sz: 524288 bytes), total 32768 (slots), used 268 (slots)
-Jan 04 22:16:52 insa-desktop kernel: vc4-drm gpu: swiotlb buffer is full (sz: 524288 bytes), total 32768 (slots), used 354 (slots)
-Jan 04 22:16:57 insa-desktop kernel: vc4-drm gpu: swiotlb buffer is full (sz: 344064 bytes), total 32768 (slots), used 120 (slots)
-Jan 04 22:16:58 insa-desktop kernel: vc4-drm gpu: swiotlb buffer is full (sz: 524288 bytes), total 32768 (slots), used 556 (slots)
-Jan 04 22:17:15 insa-desktop kernel: audit: type=1400 audit(1767561435.146:83): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:17:16 insa-desktop kernel: vc4-drm gpu: swiotlb buffer is full (sz: 380928 bytes), total 32768 (slots), used 576 (slots)
-Jan 04 22:17:16 insa-desktop kernel: vc4-drm gpu: swiotlb buffer is full (sz: 1048576 bytes), total 32768 (slots), used 150 (slots)
-Jan 04 22:17:25 insa-desktop kernel: audit: type=1400 audit(1767561445.390:84): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:17:39 insa-desktop kernel: audit: type=1400 audit(1767561459.634:85): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:17:44 insa-desktop kernel: audit: type=1400 audit(1767561464.814:86): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:17:49 insa-desktop kernel: audit: type=1400 audit(1767561469.946:87): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:17:55 insa-desktop kernel: audit: type=1400 audit(1767561475.426:88): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:18:00 insa-desktop kernel: audit: type=1400 audit(1767561480.466:89): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:18:05 insa-desktop kernel: audit: type=1400 audit(1767561485.530:90): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:18:10 insa-desktop kernel: audit: type=1400 audit(1767561490.602:91): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:18:15 insa-desktop kernel: audit: type=1400 audit(1767561495.662:92): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:18:20 insa-desktop kernel: audit: type=1400 audit(1767561500.730:93): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:18:21 insa-desktop kernel: vc4-drm gpu: swiotlb buffer is full (sz: 524288 bytes), total 32768 (slots), used 448 (slots)
-Jan 04 22:18:25 insa-desktop kernel: audit: type=1400 audit(1767561505.850:94): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:18:30 insa-desktop kernel: audit: type=1400 audit(1767561510.942:95): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:18:46 insa-desktop kernel: audit: type=1400 audit(1767561524.910:96): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:18:52 insa-desktop kernel: audit: type=1400 audit(1767561532.078:97): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:19:00 insa-desktop kernel: audit: type=1400 audit(1767561537.166:98): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:19:06 insa-desktop kernel: audit: type=1400 audit(1767561546.350:99): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:19:09 insa-desktop kernel: loop15: detected capacity change from 0 to 126768
-Jan 04 22:19:11 insa-desktop kernel: audit: type=1400 audit(1767561551.354:100): apparmor="DENIED" operation="open" profile="snap.firefox.firefox" name="/proc/pressure/memory" pid=1788 comm="MemoryPoller" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
-Jan 04 22:21:27 insa-desktop kernel: loop16: detected capacity change from 0 to 1010952
-Jan 04 22:21:41 insa-desktop kernel: audit: type=1400 audit(1767561701.190:101): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap-update-ns.firefox" pid=3829 comm="apparmor_parser"
-Jan 04 22:21:42 insa-desktop kernel: audit: type=1400 audit(1767561702.778:102): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.firefox" pid=3830 comm="apparmor_parser"
-Jan 04 22:21:44 insa-desktop kernel: audit: type=1400 audit(1767561704.670:103): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.hook.configure" pid=3837 comm="apparmor_parser"
-Jan 04 22:21:46 insa-desktop kernel: audit: type=1400 audit(1767561706.030:104): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.hook.disconnect-plug-host-hunspell" pid=3843 comm="apparmor_parser"
-Jan 04 22:21:47 insa-desktop kernel: audit: type=1400 audit(1767561707.266:105): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.hook.install" pid=3847 comm="apparmor_parser"
-Jan 04 22:21:48 insa-desktop kernel: audit: type=1400 audit(1767561708.534:106): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.hook.post-refresh" pid=3848 comm="apparmor_parser"
-Jan 04 22:21:48 insa-desktop kernel: audit: type=1400 audit(1767561708.666:107): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.geckodriver" pid=3835 comm="apparmor_parser"
-Jan 04 22:21:50 insa-desktop kernel: audit: type=1400 audit(1767561710.634:108): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.hook.configure" pid=3851 comm="apparmor_parser"
-Jan 04 22:21:54 insa-desktop kernel: audit: type=1400 audit(1767561714.526:109): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap-update-ns.snap-store" pid=3850 comm="apparmor_parser"
-Jan 04 22:21:55 insa-desktop kernel: audit: type=1400 audit(1767561715.494:110): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.snap-store" pid=3853 comm="apparmor_parser"
-Jan 04 22:21:59 insa-desktop kernel: audit: type=1400 audit(1767561719.382:111): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.ubuntu-software" pid=3856 comm="apparmor_parser"
-Jan 04 22:22:00 insa-desktop kernel: audit: type=1400 audit(1767561720.634:112): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.ubuntu-software-local-file" pid=3858 comm="apparmor_parser"
-Jan 04 22:22:03 insa-desktop kernel: audit: type=1400 audit(1767561723.030:113): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snapd-desktop-integration.hook.configure" pid=3863 comm="apparmor_parser"
-Jan 04 22:22:06 insa-desktop kernel: audit: type=1400 audit(1767561726.338:114): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap-update-ns.snapd-desktop-integration" pid=3861 comm="apparmor_parser"
-Jan 04 22:22:07 insa-desktop kernel: audit: type=1400 audit(1767561727.282:115): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snapd-desktop-integration.snapd-desktop-integration" pid=3865 comm="apparmor_parser"
-Jan 04 22:46:53 insa-desktop kernel: audit: type=1400 audit(1767563213.350:116): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="/usr/lib/cups/backend/cups-pdf" pid=6668 comm="apparmor_parser"
-Jan 04 22:46:53 insa-desktop kernel: audit: type=1400 audit(1767563213.358:117): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="/usr/sbin/cupsd" pid=6668 comm="apparmor_parser"
-Jan 04 22:46:53 insa-desktop kernel: audit: type=1400 audit(1767563213.390:118): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="/usr/sbin/cupsd//third_party" pid=6668 comm="apparmor_parser"
-Jan 04 22:46:58 insa-desktop kernel: audit: type=1400 audit(1767563218.118:119): apparmor="DENIED" operation="capable" profile="/usr/sbin/cupsd" pid=6740 comm="cupsd" capability=12  capname="net_admin"
-insa@insa-desktop:~$ 
+
+/home/insa/turtlebot3_ws/src/turtlebot3/turtlebot3_node/src/sensors/AdcReader.cpp:18:1: error: no declaration matches ‘AdcReader::AdcReader(std::string, int, int)’
+   18 | AdcReader::AdcReader(std::string i2c_dev, int addr_7b, int enable_gpio)
+      | ^~~~~~~~~
+In file included from /home/insa/turtlebot3_ws/src/turtlebot3/turtlebot3_node/src/sensors/AdcReader.cpp:1:
+/home/insa/turtlebot3_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/AdcReader.hpp:31:3: note: candidates are: ‘AdcReader::AdcReader(const AdcReader&)’
+   31 |   AdcReader(const AdcReader&) = delete;
+      |   ^~~~~~~~~
+/home/insa/turtlebot3_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/AdcReader.hpp:23:12: note:                 ‘AdcReader::AdcReader(int, std::string, int, int)’
+   23 |   explicit AdcReader(
+      |            ^~~~~~~~~
+/home/insa/turtlebot3_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/AdcReader.hpp:6:7: note: ‘class AdcReader’ defined here
+    6 | class AdcReader
+      |       ^~~~~~~~~
+gmake[2]: *** [CMakeFiles/turtlebot3_node_lib.dir/build.make:118: CMakeFiles/turtlebot3_node_lib.dir/src/sensors/AdcReader.cpp.o] Error 1
 
