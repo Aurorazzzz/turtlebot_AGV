@@ -75,10 +75,10 @@ TurtleBot3::Wheels * TurtleBot3::get_wheels()
   return &wheels_;
 }
 
-TurtleBot3::Motors * TurtleBot3::get_motors()
-{
-  return &motors_;
-}
+// TurtleBot3::Motors * TurtleBot3::get_motors()
+// {
+//   return &motors_;
+// }
 
 void TurtleBot3::init_hardware()
 {

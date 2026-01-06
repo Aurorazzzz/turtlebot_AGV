@@ -79,9 +79,9 @@ private:
   std::vector<std::unique_ptr<sensors::Sensors>> sensors_;
 
   // --- custom hardware backends ---
-  std::shared_ptr<sensors::AdcReader> adc_reader_;
-  std::shared_ptr<sensors::WheelFrequencyReader> wheel_reader_;
-  std::shared_ptr<sensors::WheelCommandState> wheel_cmd_state_;
+  std::shared_ptr<AdcReader> adc_reader_;
+  std::shared_ptr<WheelFrequencyReader> wheel_reader_;
+  std::shared_ptr<WheelCommandState> wheel_cmd_state_;
 
   std::unique_ptr<MotorPwmDir> motor_driver_;
 };
