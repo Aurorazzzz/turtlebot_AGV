@@ -1,16 +1,310 @@
-
-/home/insa/turtlebot3_ws/src/turtlebot3/turtlebot3_node/src/sensors/AdcReader.cpp:18:1: error: no declaration matches ‘AdcReader::AdcReader(std::string, int, int)’
-   18 | AdcReader::AdcReader(std::string i2c_dev, int addr_7b, int enable_gpio)
-      | ^~~~~~~~~
-In file included from /home/insa/turtlebot3_ws/src/turtlebot3/turtlebot3_node/src/sensors/AdcReader.cpp:1:
-/home/insa/turtlebot3_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/AdcReader.hpp:31:3: note: candidates are: ‘AdcReader::AdcReader(const AdcReader&)’
-   31 |   AdcReader(const AdcReader&) = delete;
-      |   ^~~~~~~~~
-/home/insa/turtlebot3_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/AdcReader.hpp:23:12: note:                 ‘AdcReader::AdcReader(int, std::string, int, int)’
-   23 |   explicit AdcReader(
-      |            ^~~~~~~~~
-/home/insa/turtlebot3_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/AdcReader.hpp:6:7: note: ‘class AdcReader’ defined here
+[ 85%] Building CXX object CMakeFiles/turtlebot3_node_lib.dir/src/devices/motor_pwm_dir.cpp.o
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:82:28: error: ‘AdcReader’ is not a member of ‘robotis::turtlebot3::sensors’; did you mean ‘AdcReader’?
+   82 |   std::shared_ptr<sensors::AdcReader> adc_reader_;
+      |                            ^~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/battery_state.hpp:12,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:31,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/AdcReader.hpp:6:7: note: ‘AdcReader’ declared here
     6 | class AdcReader
       |       ^~~~~~~~~
-gmake[2]: *** [CMakeFiles/turtlebot3_node_lib.dir/build.make:118: CMakeFiles/turtlebot3_node_lib.dir/src/sensors/AdcReader.cpp.o] Error 1
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:82:37: error: template argument 1 is invalid
+   82 |   std::shared_ptr<sensors::AdcReader> adc_reader_;
+      |                                     ^
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:83:28: error: ‘WheelFrequencyReader’ is not a member of ‘robotis::turtlebot3::sensors’; did you mean ‘WheelFrequencyReader’?
+   83 |   std::shared_ptr<sensors::WheelFrequencyReader> wheel_reader_;
+      |                            ^~~~~~~~~~~~~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:10,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:30,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/wheel_frequency_reader.hpp:7:7: note: ‘WheelFrequencyReader’ declared here
+    7 | class WheelFrequencyReader
+      |       ^~~~~~~~~~~~~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:83:48: error: template argument 1 is invalid
+   83 |   std::shared_ptr<sensors::WheelFrequencyReader> wheel_reader_;
+      |                                                ^
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:84:28: error: ‘WheelCommandState’ is not a member of ‘robotis::turtlebot3::sensors’; did you mean ‘WheelCommandState’?
+   84 |   std::shared_ptr<sensors::WheelCommandState> wheel_cmd_state_;
+      |                            ^~~~~~~~~~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:11,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:30,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/wheel_command_state.hpp:6:8: note: ‘WheelCommandState’ declared here
+    6 | struct WheelCommandState
+      |        ^~~~~~~~~~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:84:45: error: template argument 1 is invalid
+   84 |   std::shared_ptr<sensors::WheelCommandState> wheel_cmd_state_;
+      |                                             ^
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp: In constructor ‘robotis::turtlebot3::TurtleBot3::TurtleBot3(const string&)’:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:33:44: warning: unused parameter ‘usb_port’ [-Wunused-parameter]
+   33 | TurtleBot3::TurtleBot3(const std::string & usb_port)
+      |                        ~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp: In destructor ‘virtual robotis::turtlebot3::TurtleBot3::~TurtleBot3()’:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:55:17: error: request for member ‘reset’ in ‘((robotis::turtlebot3::TurtleBot3*)this)->robotis::turtlebot3::TurtleBot3::wheel_reader_’, which is of non-class type ‘int’
+   55 |   wheel_reader_.reset();
+      |                 ^~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:57:15: error: request for member ‘reset’ in ‘((robotis::turtlebot3::TurtleBot3*)this)->robotis::turtlebot3::TurtleBot3::adc_reader_’, which is of non-class type ‘int’
+   57 |   adc_reader_.reset();
+      |               ^~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:58:20: error: request for member ‘reset’ in ‘((robotis::turtlebot3::TurtleBot3*)this)->robotis::turtlebot3::TurtleBot3::wheel_cmd_state_’, which is of non-class type ‘int’
+   58 |   wheel_cmd_state_.reset();
+      |                    ^~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp: At global scope:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:78:13: error: ‘Motors’ in ‘class robotis::turtlebot3::TurtleBot3’ does not name a type
+   78 | TurtleBot3::Motors * TurtleBot3::get_motors()
+      |             ^~~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp: In member function ‘void robotis::turtlebot3::TurtleBot3::init_hardware()’:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:106:44: error: cannot convert ‘std::shared_ptr<AdcReader>’ to ‘int’ in assignment
+  106 |   adc_reader_ = std::make_shared<AdcReader>(
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+      |                                            |
+      |                                            std::shared_ptr<AdcReader>
+  107 |     pi_,          // <-- handle pigpio
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~      
+  108 |     "/dev/i2c-1",
+      |     ~~~~~~~~~~~~~                           
+  109 |     0x68,
+      |     ~~~~~                                   
+  110 |     -1
+      |     ~~                                      
+  111 |   );
+      |   ~                                         
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:113:19: error: base operand of ‘->’ is not a pointer
+  113 |   if (!adc_reader_->init()) {
+      |                   ^~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:120:57: error: cannot convert ‘std::shared_ptr<WheelFrequencyReader>’ to ‘int’ in assignment
+  120 |   wheel_reader_ = std::make_shared<WheelFrequencyReader>(pi_, 23, 27);
+      |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+      |                                                         |
+      |                                                         std::shared_ptr<WheelFrequencyReader>
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:121:21: error: base operand of ‘->’ is not a pointer
+  121 |   if (!wheel_reader_->init()) {
+      |                     ^~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:136:57: error: cannot convert ‘std::shared_ptr<WheelCommandState>’ to ‘int’ in assignment
+  136 |   wheel_cmd_state_ = std::make_shared<WheelCommandState>();
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+      |                                                         |
+      |                                                         std::shared_ptr<WheelCommandState>
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp: In lambda function:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:228:23: error: base operand of ‘->’ is not a pointer
+  228 |       wheel_cmd_state_->sign_left.store(sgn(dutyL));
+      |                       ^~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:229:23: error: base operand of ‘->’ is not a pointer
+  229 |       wheel_cmd_state_->sign_right.store(sgn(dutyR));
+      |                       ^~
+In file included from /usr/include/c++/11/memory:76,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:20,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/usr/include/c++/11/bits/unique_ptr.h: In instantiation of ‘typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...) [with _Tp = robotis::turtlebot3::sensors::BatteryState; _Args = {std::shared_ptr<rclcpp::Node>&, int&, const char (&)[14]}; typename std::_MakeUniq<_Tp>::__single_object = std::unique_ptr<robotis::turtlebot3::sensors::BatteryState, std::default_delete<robotis::turtlebot3::sensors::BatteryState> >]’:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:155:44:   required from here
+/usr/include/c++/11/bits/unique_ptr.h:962:30: error: no matching function for call to ‘robotis::turtlebot3::sensors::BatteryState::BatteryState(std::shared_ptr<rclcpp::Node>&, int&, const char [14])’
+  962 |     { return unique_ptr<_Tp>(new _Tp(std::forward<_Args>(__args)...)); }
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:31,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/battery_state.hpp:24:12: note: candidate: ‘robotis::turtlebot3::sensors::BatteryState::BatteryState(std::shared_ptr<rclcpp::Node>&, std::shared_ptr<AdcReader>, const string&)’
+   24 |   explicit BatteryState(
+      |            ^~~~~~~~~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/battery_state.hpp:26:32: note:   no known conversion for argument 2 from ‘int’ to ‘std::shared_ptr<AdcReader>’
+   26 |     std::shared_ptr<AdcReader> adc,
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/battery_state.hpp:21:7: note: candidate: ‘robotis::turtlebot3::sensors::BatteryState::BatteryState(const robotis::turtlebot3::sensors::BatteryState&)’
+   21 | class BatteryState : public Sensors
+      |       ^~~~~~~~~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/battery_state.hpp:21:7: note:   candidate expects 1 argument, 3 provided
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/battery_state.hpp:21:7: note: candidate: ‘robotis::turtlebot3::sensors::BatteryState::BatteryState(robotis::turtlebot3::sensors::BatteryState&&)’
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/battery_state.hpp:21:7: note:   candidate expects 1 argument, 3 provided
+In file included from /usr/include/c++/11/memory:76,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:20,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/usr/include/c++/11/bits/unique_ptr.h: In instantiation of ‘typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...) [with _Tp = robotis::turtlebot3::sensors::JointState; _Args = {std::shared_ptr<rclcpp::Node>&, int&, int&, const char (&)[13], const char (&)[10]}; typename std::_MakeUniq<_Tp>::__single_object = std::unique_ptr<robotis::turtlebot3::sensors::JointState, std::default_delete<robotis::turtlebot3::sensors::JointState> >]’:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:161:42:   required from here
+/usr/include/c++/11/bits/unique_ptr.h:962:30: error: no matching function for call to ‘robotis::turtlebot3::sensors::JointState::JointState(std::shared_ptr<rclcpp::Node>&, int&, int&, const char [13], const char [10])’
+  962 |     { return unique_ptr<_Tp>(new _Tp(std::forward<_Args>(__args)...)); }
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:30,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:19:12: note: candidate: ‘robotis::turtlebot3::sensors::JointState::JointState(std::shared_ptr<rclcpp::Node>&, std::shared_ptr<WheelFrequencyReader>, std::shared_ptr<WheelCommandState>, const string&, const string&)’
+   19 |   explicit JointState(
+      |            ^~~~~~~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:21:43: note:   no known conversion for argument 2 from ‘int’ to ‘std::shared_ptr<WheelFrequencyReader>’
+   21 |     std::shared_ptr<WheelFrequencyReader> wheel_reader,
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:16:7: note: candidate: ‘robotis::turtlebot3::sensors::JointState::JointState(const robotis::turtlebot3::sensors::JointState&)’
+   16 | class JointState : public Sensors
+      |       ^~~~~~~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:16:7: note:   candidate expects 1 argument, 5 provided
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:16:7: note: candidate: ‘robotis::turtlebot3::sensors::JointState::JointState(robotis::turtlebot3::sensors::JointState&&)’
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:16:7: note:   candidate expects 1 argument, 5 provided
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/sensors/joint_state.cpp: In member function ‘virtual void robotis::turtlebot3::sensors::JointState::publish(const rclcpp::Time&)’:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/sensors/joint_state.cpp:32:47: note: parameter passing for argument of type ‘std::pair<double, double>’ when C++17 is enabled changed to match C++14 in GCC 10.1
+   32 |     auto fr = wheel_reader_->getFrequenciesHz();
+      |                                               ^
+gmake[2]: *** [CMakeFiles/turtlebot3_node_lib.dir/build.make:76: CMakeFiles/turtlebot3_node_lib.dir/src/turtlebot3.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/turtlebot3_node_lib.dir/all] Error 2
+gmake: *** [Makefile:101: all] Error 2
+--- stderr: turtlebot3_node
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/sensors/wheel_frequency_reader.cpp: In member function ‘std::pair<double, double> WheelFrequencyReader::getFrequenciesHz() const’:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/sensors/wheel_frequency_reader.cpp:60:68: note: parameter passing for argument of type ‘std::pair<double, double>’ when C++17 is enabled changed to match C++14 in GCC 10.1
+   60 | std::pair<double, double> WheelFrequencyReader::getFrequenciesHz() const
+      |                                                                    ^~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:82:28: error: ‘AdcReader’ is not a member of ‘robotis::turtlebot3::sensors’; did you mean ‘AdcReader’?
+   82 |   std::shared_ptr<sensors::AdcReader> adc_reader_;
+      |                            ^~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/battery_state.hpp:12,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:31,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/AdcReader.hpp:6:7: note: ‘AdcReader’ declared here
+    6 | class AdcReader
+      |       ^~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:82:37: error: template argument 1 is invalid
+   82 |   std::shared_ptr<sensors::AdcReader> adc_reader_;
+      |                                     ^
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:83:28: error: ‘WheelFrequencyReader’ is not a member of ‘robotis::turtlebot3::sensors’; did you mean ‘WheelFrequencyReader’?
+   83 |   std::shared_ptr<sensors::WheelFrequencyReader> wheel_reader_;
+      |                            ^~~~~~~~~~~~~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:10,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:30,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/wheel_frequency_reader.hpp:7:7: note: ‘WheelFrequencyReader’ declared here
+    7 | class WheelFrequencyReader
+      |       ^~~~~~~~~~~~~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:83:48: error: template argument 1 is invalid
+   83 |   std::shared_ptr<sensors::WheelFrequencyReader> wheel_reader_;
+      |                                                ^
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:84:28: error: ‘WheelCommandState’ is not a member of ‘robotis::turtlebot3::sensors’; did you mean ‘WheelCommandState’?
+   84 |   std::shared_ptr<sensors::WheelCommandState> wheel_cmd_state_;
+      |                            ^~~~~~~~~~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:11,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:30,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/wheel_command_state.hpp:6:8: note: ‘WheelCommandState’ declared here
+    6 | struct WheelCommandState
+      |        ^~~~~~~~~~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:84:45: error: template argument 1 is invalid
+   84 |   std::shared_ptr<sensors::WheelCommandState> wheel_cmd_state_;
+      |                                             ^
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp: In constructor ‘robotis::turtlebot3::TurtleBot3::TurtleBot3(const string&)’:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:33:44: warning: unused parameter ‘usb_port’ [-Wunused-parameter]
+   33 | TurtleBot3::TurtleBot3(const std::string & usb_port)
+      |                        ~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp: In destructor ‘virtual robotis::turtlebot3::TurtleBot3::~TurtleBot3()’:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:55:17: error: request for member ‘reset’ in ‘((robotis::turtlebot3::TurtleBot3*)this)->robotis::turtlebot3::TurtleBot3::wheel_reader_’, which is of non-class type ‘int’
+   55 |   wheel_reader_.reset();
+      |                 ^~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:57:15: error: request for member ‘reset’ in ‘((robotis::turtlebot3::TurtleBot3*)this)->robotis::turtlebot3::TurtleBot3::adc_reader_’, which is of non-class type ‘int’
+   57 |   adc_reader_.reset();
+      |               ^~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:58:20: error: request for member ‘reset’ in ‘((robotis::turtlebot3::TurtleBot3*)this)->robotis::turtlebot3::TurtleBot3::wheel_cmd_state_’, which is of non-class type ‘int’
+   58 |   wheel_cmd_state_.reset();
+      |                    ^~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp: At global scope:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:78:13: error: ‘Motors’ in ‘class robotis::turtlebot3::TurtleBot3’ does not name a type
+   78 | TurtleBot3::Motors * TurtleBot3::get_motors()
+      |             ^~~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp: In member function ‘void robotis::turtlebot3::TurtleBot3::init_hardware()’:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:106:44: error: cannot convert ‘std::shared_ptr<AdcReader>’ to ‘int’ in assignment
+  106 |   adc_reader_ = std::make_shared<AdcReader>(
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+      |                                            |
+      |                                            std::shared_ptr<AdcReader>
+  107 |     pi_,          // <-- handle pigpio
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~      
+  108 |     "/dev/i2c-1",
+      |     ~~~~~~~~~~~~~                           
+  109 |     0x68,
+      |     ~~~~~                                   
+  110 |     -1
+      |     ~~                                      
+  111 |   );
+      |   ~                                         
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:113:19: error: base operand of ‘->’ is not a pointer
+  113 |   if (!adc_reader_->init()) {
+      |                   ^~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:120:57: error: cannot convert ‘std::shared_ptr<WheelFrequencyReader>’ to ‘int’ in assignment
+  120 |   wheel_reader_ = std::make_shared<WheelFrequencyReader>(pi_, 23, 27);
+      |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+      |                                                         |
+      |                                                         std::shared_ptr<WheelFrequencyReader>
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:121:21: error: base operand of ‘->’ is not a pointer
+  121 |   if (!wheel_reader_->init()) {
+      |                     ^~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:136:57: error: cannot convert ‘std::shared_ptr<WheelCommandState>’ to ‘int’ in assignment
+  136 |   wheel_cmd_state_ = std::make_shared<WheelCommandState>();
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+      |                                                         |
+      |                                                         std::shared_ptr<WheelCommandState>
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp: In lambda function:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:228:23: error: base operand of ‘->’ is not a pointer
+  228 |       wheel_cmd_state_->sign_left.store(sgn(dutyL));
+      |                       ^~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:229:23: error: base operand of ‘->’ is not a pointer
+  229 |       wheel_cmd_state_->sign_right.store(sgn(dutyR));
+      |                       ^~
+In file included from /usr/include/c++/11/memory:76,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:20,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/usr/include/c++/11/bits/unique_ptr.h: In instantiation of ‘typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...) [with _Tp = robotis::turtlebot3::sensors::BatteryState; _Args = {std::shared_ptr<rclcpp::Node>&, int&, const char (&)[14]}; typename std::_MakeUniq<_Tp>::__single_object = std::unique_ptr<robotis::turtlebot3::sensors::BatteryState, std::default_delete<robotis::turtlebot3::sensors::BatteryState> >]’:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:155:44:   required from here
+/usr/include/c++/11/bits/unique_ptr.h:962:30: error: no matching function for call to ‘robotis::turtlebot3::sensors::BatteryState::BatteryState(std::shared_ptr<rclcpp::Node>&, int&, const char [14])’
+  962 |     { return unique_ptr<_Tp>(new _Tp(std::forward<_Args>(__args)...)); }
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:31,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/battery_state.hpp:24:12: note: candidate: ‘robotis::turtlebot3::sensors::BatteryState::BatteryState(std::shared_ptr<rclcpp::Node>&, std::shared_ptr<AdcReader>, const string&)’
+   24 |   explicit BatteryState(
+      |            ^~~~~~~~~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/battery_state.hpp:26:32: note:   no known conversion for argument 2 from ‘int’ to ‘std::shared_ptr<AdcReader>’
+   26 |     std::shared_ptr<AdcReader> adc,
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/battery_state.hpp:21:7: note: candidate: ‘robotis::turtlebot3::sensors::BatteryState::BatteryState(const robotis::turtlebot3::sensors::BatteryState&)’
+   21 | class BatteryState : public Sensors
+      |       ^~~~~~~~~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/battery_state.hpp:21:7: note:   candidate expects 1 argument, 3 provided
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/battery_state.hpp:21:7: note: candidate: ‘robotis::turtlebot3::sensors::BatteryState::BatteryState(robotis::turtlebot3::sensors::BatteryState&&)’
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/battery_state.hpp:21:7: note:   candidate expects 1 argument, 3 provided
+In file included from /usr/include/c++/11/memory:76,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:20,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/usr/include/c++/11/bits/unique_ptr.h: In instantiation of ‘typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...) [with _Tp = robotis::turtlebot3::sensors::JointState; _Args = {std::shared_ptr<rclcpp::Node>&, int&, int&, const char (&)[13], const char (&)[10]}; typename std::_MakeUniq<_Tp>::__single_object = std::unique_ptr<robotis::turtlebot3::sensors::JointState, std::default_delete<robotis::turtlebot3::sensors::JointState> >]’:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:161:42:   required from here
+/usr/include/c++/11/bits/unique_ptr.h:962:30: error: no matching function for call to ‘robotis::turtlebot3::sensors::JointState::JointState(std::shared_ptr<rclcpp::Node>&, int&, int&, const char [13], const char [10])’
+  962 |     { return unique_ptr<_Tp>(new _Tp(std::forward<_Args>(__args)...)); }
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/turtlebot3.hpp:30,
+                 from /home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/turtlebot3.cpp:17:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:19:12: note: candidate: ‘robotis::turtlebot3::sensors::JointState::JointState(std::shared_ptr<rclcpp::Node>&, std::shared_ptr<WheelFrequencyReader>, std::shared_ptr<WheelCommandState>, const string&, const string&)’
+   19 |   explicit JointState(
+      |            ^~~~~~~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:21:43: note:   no known conversion for argument 2 from ‘int’ to ‘std::shared_ptr<WheelFrequencyReader>’
+   21 |     std::shared_ptr<WheelFrequencyReader> wheel_reader,
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:16:7: note: candidate: ‘robotis::turtlebot3::sensors::JointState::JointState(const robotis::turtlebot3::sensors::JointState&)’
+   16 | class JointState : public Sensors
+      |       ^~~~~~~~~~
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:16:7: note:   candidate expects 1 argument, 5 provided
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:16:7: note: candidate: ‘robotis::turtlebot3::sensors::JointState::JointState(robotis::turtlebot3::sensors::JointState&&)’
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/include/turtlebot3_node/sensors/joint_state.hpp:16:7: note:   candidate expects 1 argument, 5 provided
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/sensors/joint_state.cpp: In member function ‘virtual void robotis::turtlebot3::sensors::JointState::publish(const rclcpp::Time&)’:
+/home/insa/AGV_ws/src/turtlebot3/turtlebot3_node/src/sensors/joint_state.cpp:32:47: note: parameter passing for argument of type ‘std::pair<double, double>’ when C++17 is enabled changed to match C++14 in GCC 10.1
+   32 |     auto fr = wheel_reader_->getFrequenciesHz();
+      |                                               ^
+gmake[2]: *** [CMakeFiles/turtlebot3_node_lib.dir/build.make:76: CMakeFiles/turtlebot3_node_lib.dir/src/turtlebot3.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/turtlebot3_node_lib.dir/all] Error 2
+gmake: *** [Makefile:101: all] Error 2
+---
+Failed   <<< turtlebot3_node [43.7s, exited with code 2]
+[Processing: turtlebot3_node]
+
+Summary: 0 packages finished [45.0s]
+  1 package failed: turtlebot3_node
+  1 package had stderr output: turtlebot3_node
 
