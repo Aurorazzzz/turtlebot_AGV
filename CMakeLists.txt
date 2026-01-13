@@ -18,16 +18,26 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 ################################################################################
 find_package(ament_cmake REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(message_filters REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rcutils REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
+# find_package(std_srvs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
-find_package(message_filters REQUIRED)
+find_package(turtlebot3_msgs REQUIRED)
+
+################################################################################
+# Build
+################################################################################
+include_directories(
+  include
+)
 
 add_library(${PROJECT_NAME}_lib
+  "src/odometry.cpp"
   "src/turtlebot3.cpp"
 
   "src/sensors/battery_state.cpp"
@@ -41,17 +51,23 @@ add_library(${PROJECT_NAME}_lib
 target_include_directories(${PROJECT_NAME}_lib PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
-)
-
-# pigpio installé via "make install" se trouve typiquement dans /usr/local
-target_include_directories(${PROJECT_NAME}_lib PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>
   /usr/local/include
 )
 
 target_link_directories(${PROJECT_NAME}_lib PUBLIC
   /usr/local/lib
+)
+
+ament_target_dependencies(${PROJECT_NAME}_lib
+  rclcpp
+  sensor_msgs
+  geometry_msgs
+  std_msgs
+  nav_msgs
+  tf2
+  tf2_ros
+  message_filters
+  rcutils
 )
 
 target_link_libraries(${PROJECT_NAME}_lib
@@ -65,10 +81,30 @@ target_link_libraries(${PROJECT_NAME}_lib
   tf2_ros::tf2_ros
 )
 
+set(EXECUTABLE_NAME "turtlebot3_ros")
+add_executable(${EXECUTABLE_NAME} src/node_main.cpp)
+target_link_libraries(${EXECUTABLE_NAME}
+  ${PROJECT_NAME}_lib
+)
+ament_target_dependencies(${EXECUTABLE_NAME} rclcpp)
 
+################################################################################
+# Install
+################################################################################
+install(DIRECTORY param
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(TARGETS ${EXECUTABLE_NAME}
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+################################################################################
+# Macro for ament package
+################################################################################
+ament_export_include_directories(include)
 ament_export_dependencies(
   geometry_msgs
-  message_filters
   nav_msgs
   rclcpp
   rcutils
@@ -76,11 +112,8 @@ ament_export_dependencies(
   std_msgs
   tf2
   tf2_ros
+  message_filters
 )
+ament_export_targets(${PROJECT_NAME}_targets HAS_LIBRARY_TARGET)
 
-ament_target_dependencies(${PROJECT_NAME}_lib
-  rclcpp
-  sensor_msgs
-  geometry_msgs
-  std_msgs
-)
+ament_package()
