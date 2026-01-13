@@ -24,7 +24,7 @@ find_package(rclcpp REQUIRED)
 find_package(rcutils REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
-# find_package(std_srvs REQUIRED)
+ find_package(std_srvs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(turtlebot3_msgs REQUIRED)
@@ -38,6 +38,10 @@ include_directories(
 
 add_library(${PROJECT_NAME}_lib
   "src/turtlebot3.cpp"
+
+  "src/diff_drive_controller.cpp"
+  "src/dynamixel_sdk_wrapper.cpp"
+  "src/odometry.cpp"
 
   "src/sensors/battery_state.cpp"
   "src/sensors/joint_state.cpp"
