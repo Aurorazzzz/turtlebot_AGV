@@ -40,7 +40,6 @@ add_library(${PROJECT_NAME}_lib
   "src/turtlebot3.cpp"
 
   "src/diff_drive_controller.cpp"
-  "src/dynamixel_sdk_wrapper.cpp"
   "src/odometry.cpp"
 
   "src/sensors/battery_state.cpp"
