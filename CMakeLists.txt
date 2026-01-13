@@ -24,7 +24,7 @@ find_package(rclcpp REQUIRED)
 find_package(rcutils REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
- find_package(std_srvs REQUIRED)
+find_package(std_srvs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(turtlebot3_msgs REQUIRED)
@@ -70,6 +70,7 @@ ament_target_dependencies(${PROJECT_NAME}_lib
   tf2_ros
   message_filters
   rcutils
+  std_srvs
 )
 
 target_link_libraries(${PROJECT_NAME}_lib
