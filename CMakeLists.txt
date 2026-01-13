@@ -114,6 +114,5 @@ ament_export_dependencies(
   tf2_ros
   message_filters
 )
-ament_export_targets(${PROJECT_NAME}_targets HAS_LIBRARY_TARGET)
 
 ament_package()
