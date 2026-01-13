@@ -37,7 +37,6 @@ include_directories(
 )
 
 add_library(${PROJECT_NAME}_lib
-  "src/odometry.cpp"
   "src/turtlebot3.cpp"
 
   "src/sensors/battery_state.cpp"
