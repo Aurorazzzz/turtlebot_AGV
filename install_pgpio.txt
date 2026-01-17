@@ -25,5 +25,3 @@ Test pour voir si ça fonctionne
 pigs t
 --> valeur qui apparait = ok
 
-Ajouter le user au groupe adc : sudo usermod -aG dialout $USER
-puis log out ou redemarrage
