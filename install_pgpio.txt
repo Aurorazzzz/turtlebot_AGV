@@ -24,3 +24,5 @@ sudo systemctl start pigpiod
 Test pour voir si ça fonctionne
 pigs t
 --> valeur qui apparait = ok
+
+g++ test_led.cpp -lpigpiod_if2
