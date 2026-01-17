@@ -94,7 +94,7 @@ void TurtleBot3::init_hardware()
   }
 
   // 2) OE: GPIO0 à 1
-  const int OE_GPIO = 17;
+  const int OE_GPIO = 0;
   if (set_mode(pi_, OE_GPIO, PI_OUTPUT) != 0) {
     RCLCPP_ERROR(this->get_logger(), "set_mode(OE_GPIO) failed");
     rclcpp::shutdown();
@@ -203,8 +203,8 @@ void TurtleBot3::cmd_vel_callback()
       return;
     }
 
-    double gain_v = 200.0;
-    double gain_w = 200.0;
+    double gain_v = 100.0;
+    double gain_w = 100.0;
     this->get_parameter("motors.gain_v", gain_v);
     this->get_parameter("motors.gain_w", gain_w);
 

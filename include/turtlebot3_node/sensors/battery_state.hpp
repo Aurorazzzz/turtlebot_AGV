@@ -41,13 +41,13 @@ private:
 
   // Exemple: pont diviseur pour la tension batterie (si CH1 mesure Vbat_div)
   // Vbat = Vadc * (Rtop+Rbottom)/Rbottom
-  double r_top_ohm_ = 100000.0;
-  double r_bottom_ohm_ = 10000.0;
+  double r_top_ohm_ = 88.0;
+  double r_bottom_ohm_ = 7.0;
 
   // Exemple: conversion courant depuis CH4 (si CH4 mesure Vsense après ampli)
   // I = Vsense / (Rshunt * gain)
-  double shunt_ohm_ = 0.01;   // 10 mΩ par exemple
-  double current_gain_ = 1.0; // gain de l'ampli (ou 1 si direct)
+  double shunt_ohm_ = 0.0005;   // 10 mΩ par exemple
+  double current_gain_ = 200.0; // gain de l'ampli (ou 1 si direct)
 };
 
 }  // namespace sensors
