@@ -51,8 +51,8 @@ void JointState::publish(const rclcpp::Time & now)
 
   constexpr double PI = 3.14159265358979323846;
 
-  double wL = (fL_signed*1.3498 - 1.5155)*2*PI;
-  double wR = (fR_signed*1.3498 - 1.5155)*2*PI;
+  double wL = (fL_signed*1.3498 - 1.5155)*2*PI/60;
+  double wR = (fR_signed*1.3498 - 1.5155)*2*PI/60;
 
   double dt = 0.0;
   if (!has_last_time_) {
