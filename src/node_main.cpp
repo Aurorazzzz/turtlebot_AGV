@@ -61,7 +61,7 @@ int main(int argc, char * argv[])
     turtlebot3->get_wheels()->radius);
 
   executor.add_node(turtlebot3);
-  // executor.add_node(diff_drive_controller);
+  executor.add_node(diff_drive_controller);
   executor.spin();
 
   rclcpp::shutdown();
