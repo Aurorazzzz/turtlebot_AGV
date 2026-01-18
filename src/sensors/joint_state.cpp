@@ -1,7 +1,6 @@
 #include "turtlebot3_node/sensors/joint_state.hpp"
 
 #include <utility>
-#include <numbers>
 
 
 using robotis::turtlebot3::sensors::JointState;
@@ -50,10 +49,10 @@ void JointState::publish(const rclcpp::Time & now)
   const double fL_signed = fL * static_cast<double>(sL);
   const double fR_signed = fR * static_cast<double>(sR);
 
-  double pi_n = std::numbers::pi;
+  constexpr double PI = 3.14159265358979323846;
 
-  double wL = (fL_signed*1.3498 - 1.5155)*2*pi_n;
-  double wR = (fR_signed*1.3498 - 1.5155)*2*pi_n;
+  double wL = (fL_signed*1.3498 - 1.5155)*2*PI;
+  double wR = (fR_signed*1.3498 - 1.5155)*2*PI;
 
   double dt = 0.0;
   if (!has_last_time_) {
