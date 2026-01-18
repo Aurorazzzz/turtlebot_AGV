@@ -1,6 +1,8 @@
 #include "turtlebot3_node/sensors/joint_state.hpp"
 
 #include <utility>
+#include <numbers>
+
 
 using robotis::turtlebot3::sensors::JointState;
 
@@ -44,6 +46,11 @@ void JointState::publish(const rclcpp::Time & now)
   // Valeurs signées : on publie la fréquence signée (debug-friendly)
   const double fL_signed = fL * static_cast<double>(sL);
   const double fR_signed = fR * static_cast<double>(sR);
+
+  double pi_n = std::numbers::pi;
+
+  fL_signed = (fL_signed*1.3498 - 1.5155)*2*pi_n;
+  fR_signed = (fR_signed*1.3498 - 1.5155)*2*pi_n;
 
   // Position : pour l'instant on ne remplit pas (vous pourrez intégrer plus tard)
   // msg->position = {...};  // vide
