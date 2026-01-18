@@ -130,6 +130,13 @@ Odometry::Odometry(
 
 void Odometry::joint_state_callback(const sensor_msgs::msg::JointState::SharedPtr joint_state_msg)
 {
+  RCLCPP_INFO_THROTTLE(
+    nh_->get_logger(), *nh_->get_clock(), 2000,
+    "Odometry callback: pos_size=%zu stamp=%u.%u",
+    joint_state_msg->position.size(),
+    joint_state_msg->header.stamp.sec,
+    joint_state_msg->header.stamp.nanosec);
+
   const rclcpp::Time current_time = joint_state_msg->header.stamp;
   static rclcpp::Time last_time = current_time;
   const rclcpp::Duration duration = current_time - last_time;
