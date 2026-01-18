@@ -14,7 +14,10 @@ JointState::JointState(
   const std::string & frame_id)
 : Sensors(nh, frame_id),
   wheel_reader_(std::move(wheel_reader)),
-  wheel_cmd_state_(std::move(wheel_cmd_state))
+  wheel_cmd_state_(std::move(wheel_cmd_state)),
+  pos_left_(0.0),
+  pos_right_(0.0),
+  has_last_time_(false)
 {
   pub_ = nh->create_publisher<sensor_msgs::msg::JointState>(topic_name, this->qos_);
   RCLCPP_INFO(nh_->get_logger(), "Succeeded to create joint state publisher (freq + external sign)");
@@ -49,14 +52,30 @@ void JointState::publish(const rclcpp::Time & now)
 
   double pi_n = std::numbers::pi;
 
-  fL_signed = (fL_signed*1.3498 - 1.5155)*2*pi_n;
-  fR_signed = (fR_signed*1.3498 - 1.5155)*2*pi_n;
+  double wL = (fL_signed*1.3498 - 1.5155)*2*pi_n;
+  double wR = (fR_signed*1.3498 - 1.5155)*2*pi_n;
+
+  double dt = 0.0;
+  if (!has_last_time_) {
+    last_time_ = now;
+    has_last_time_ = true;
+  } else {
+    dt = (now - last_time_).seconds();
+    last_time_ = now;
+  }
+
+  // fL_signed et fR_signed sont déjà en rad/s
+  if (dt > 0.0 && std::isfinite(dt)) {
+    pos_left_  += wL * dt;
+    pos_right_ += wR * dt;
+  }
+
 
   // Position : pour l'instant on ne remplit pas (vous pourrez intégrer plus tard)
-  // msg->position = {...};  // vide
+  msg->position = {pos_left_, pos_right_};  // vide
 
   // Velocity : ici = fréquence signée (Hz), temporaire tant que la conversion n’est pas calibrée
-  msg->velocity = {fL_signed, fR_signed};
+  msg->velocity = {wL, wR};
 
   pub_->publish(std::move(msg));
 }

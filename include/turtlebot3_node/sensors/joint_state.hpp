@@ -33,6 +33,12 @@ private:
   std::string wheel_left_joint_  = "wheel_left_joint";
   std::string wheel_right_joint_ = "wheel_right_joint";
 
+  double pos_left_{0.0};
+  double pos_right_{0.0};
+
+  rclcpp::Time last_time_;
+  bool has_last_time_{false};
+
   // Optionnel : si vous voulez aussi une position, on peut intégrer plus tard
   // (mais ça demandera de convertir en rad/s ou d’accepter une "position brute").
 };
