@@ -65,11 +65,6 @@ void MotorPwmDir::setSignedDuty(int left, int right)
   const int left_dir  = (left >= 0) ? 1 : 0;
   const int right_dir = (right >= 0) ? 0 : 1;
 
-  RCLCPP_INFO(rclcpp::get_logger("MotorPwmDir"),
-            "LEFT %s pwm=%d | RIGHT %s pwm=%d",
-            left, left_dir,
-            right, right_dir);
-
   const int left_pwm  = std::abs(left);
   const int right_pwm = std::abs(right);
 

@@ -29,3 +29,6 @@ Ajouter le user au groupe adc : sudo usermod -aG dialout $USER
 puis log out ou redemarrage
 
 g++ -o mon_programme mon_programme.cpp -lpigpiod_if2
+
+export TURTLEBOT3_MODEL='burger'
+ros2 launch turtlebot3_bringup robot.launch.py
