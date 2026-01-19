@@ -2,6 +2,8 @@
 
 #include <pigpiod_if2.h>
 
+#include <rclcpp/rclcpp.hpp>
+
 #include <cstdio>
 #include <cstdlib>
 
