@@ -125,7 +125,7 @@ void TurtleBot3::init_hardware()
   }
 
   // 5) Moteurs : PWM12+DIR25 (gauche), PWM13+DIR24 (droite)
-  motor_driver_ = std::make_unique<MotorPwmDir>(pi_, 12, 14, 13, 15, 20000);
+  motor_driver_ = std::make_unique<MotorPwmDir>(pi_, 12, 14, 13, 15, 500);
   if (!motor_driver_->init()) {
     RCLCPP_ERROR(get_logger(), "Motor driver init failed");
     rclcpp::shutdown();
