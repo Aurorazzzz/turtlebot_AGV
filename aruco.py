@@ -12,7 +12,7 @@ class ArucoFollowerNode(Node):
         super().__init__('aruco_follower_node')
         
         # --- CONFIGURATION ---
-        self.image_topic = '/image_raw/compressed'
+        self.image_topic = '/camera/image_raw/compressed'
         self.cmd_vel_topic = '/cmd_vel'
         
         # Paramètres du robot
