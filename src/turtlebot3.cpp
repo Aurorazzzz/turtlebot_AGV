@@ -43,7 +43,7 @@ TurtleBot3::TurtleBot3(const std::string & usb_port)
 
 TurtleBot3::~TurtleBot3()
 {
-  const int OE_GPIO = 17;
+  const int OE_GPIO = 19;
 
   // 1) Mise en sécurité : stop moteurs si possible
   if (motor_driver_) {
@@ -94,7 +94,7 @@ void TurtleBot3::init_hardware()
   }
 
   // 2) OE: GPIO0 à 1
-  const int OE_GPIO = 17;
+  const int OE_GPIO = 19;
   if (set_mode(pi_, OE_GPIO, PI_OUTPUT) != 0) {
     RCLCPP_ERROR(this->get_logger(), "set_mode(OE_GPIO) failed");
     rclcpp::shutdown();

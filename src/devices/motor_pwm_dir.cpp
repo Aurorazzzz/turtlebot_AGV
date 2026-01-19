@@ -54,7 +54,8 @@ bool MotorPwmDir::init()
 void MotorPwmDir::setSignedDuty(int left, int right)
 {
   if (!initialized_ || pi_ < 0) return;
-
+	
+  right = -right;
   left = clamp255_(left);
   right = clamp255_(right);
 

@@ -7,7 +7,7 @@ class MotorPwmDir
 {
 public:
   // pi = handle retourné par pigpio_start() (dans TurtleBot3)
-  MotorPwmDir(int pi, int pwm_left, int dir_left, int pwm_right, int dir_right, int pwm_freq_hz = 20000);
+  MotorPwmDir(int pi, int pwm_left, int dir_left, int pwm_right, int dir_right, int pwm_freq_hz = 500);
 
   bool init();
 
