@@ -58,7 +58,9 @@ class ArucoFollowerNode(Node):
             self.get_logger().error(f'Erreur image: {e}')
             return
 
-        if cv_image is None: return
+        if cv_image is None: 
+            print("image a pb")
+            return
         print("Image ok")
         # Récupérer les dimensions de l'image (Hauteur, Largeur)
         h, w, _ = cv_image.shape
